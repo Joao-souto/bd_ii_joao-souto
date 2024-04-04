@@ -6,7 +6,10 @@ SET @db_exists := (SELECT COUNT(*) FROM information_schema.SCHEMATA WHERE SCHEMA
 
 IF @db_exists > 0
 BEGIN
-    DROP DATABASE pizzaria;
+    SET @drop_query = CONCAT('DROP DATABASE pizzaria');
+    PREPARE drop_stmt FROM @drop_query;
+    EXECUTE drop_stmt;
+    DEALLOCATE PREPARE drop_stmt;
 END;
 
 create database pizzaria;
