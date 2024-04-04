@@ -1,6 +1,4 @@
--- João Pedro Monteiro Souto
-
--- drop database pizzaria;
+drop database pizzaria;
 create database pizzaria;
 use pizzaria;
 
@@ -53,3 +51,4 @@ create table pedidos(
     foreign key (cod_cliente) references clientes (cod_cliente),
     foreign key (cod_pizza) references pizzas (cod_pizza)
 );
+
