@@ -6,8 +6,8 @@ SET @db_exists := (SELECT COUNT(*) FROM information_schema.SCHEMATA WHERE SCHEMA
 
 IF @db_exists > 0
 BEGIN
-    SET @drop_query = CONCAT('DROP DATABASE pizzaria');
-    PREPARE drop_stmt FROM @drop_query;
+    SET @drop_query = CONCAT('DROP DATABASE pizzaria'); -- atribuindo string a uma variável, através de uma função, já que não é possível executar diretamente o comando por motivos de segurança
+    PREPARE drop_stmt FROM @drop_query; -- preparando um comando para ser executado
     EXECUTE drop_stmt;
     DEALLOCATE PREPARE drop_stmt;
 END;
