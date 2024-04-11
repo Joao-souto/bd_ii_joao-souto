@@ -1,5 +1,5 @@
 SET @db_exists := (SELECT COUNT(*) FROM information_schema.SCHEMATA WHERE SCHEMA_NAME = 'pizzaria');
- --declaração de uma variável que vai armazenar a quantidade de linhas do banco
+ -- declaração de uma variável que vai armazenar a quantidade de linhas do banco
  -- COUNT(*) é uma função de agregação que conta o número de linhas retornadas pela consulta.
  -- "information_schema.SCHEMATA" é uma exibição do sistema que contém informações sobre todos os bancos de dados no servidor
  -- "WHERE" condição para armazenar na variável a quantidade de linhas desse banco
