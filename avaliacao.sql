@@ -48,7 +48,7 @@ create table pedidos(
     cod_cliente int,
     cod_pizza int,
     quant_pizzas int,
-    data varchar(20),
+    data_pedido varchar(20),
     primary key (cod_pedido),
     foreign key (cod_cliente) references clientes (cod_cliente),
     foreign key (cod_pizza) references pizzas (cod_pizza)
@@ -95,3 +95,12 @@ cnpj, pizza_fornecida, fornecedor, telefone, email
 values
 ('04743646000159',1,'Compre Aqui',"11976535190",'adriano123@outlook.com'),
 ('04743636000155',2,'Atacadão',"11976535190",'adriano123@outlook.com');
+
+insert into pedidos
+(
+    cod_pedido, cod_cliente, cod_pizza, quant_pizzas, data_pedido
+)
+values
+(1,3,6,2,"12/02/2024"),
+(2,4,3,2,"11/02/2024"),
+(3,2,2,2,"11/02/2024");
