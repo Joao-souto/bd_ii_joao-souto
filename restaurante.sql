@@ -9,8 +9,8 @@ USE Restaurante;
 CREATE TABLE IF NOT EXISTS Clientes ( 
 
     ID_cliente INT AUTO_INCREMENT, 
-    CPF VARCHAR(11) NOT NULL, 
     Nome VARCHAR(255), 
+    CPF VARCHAR(11) NOT NULL,
     Endereco VARCHAR(255), 
     Email VARCHAR(255), 
     Telefone VARCHAR(12), 
@@ -22,9 +22,9 @@ CREATE TABLE IF NOT EXISTS Clientes (
 CREATE TABLE IF NOT EXISTS Funcionarios ( 
 
     ID_funcionario INT AUTO_INCREMENT, 
-    CPF VARCHAR(11) NOT NULL, 
-    Nome VARCHAR(255), 
-    Endereco VARCHAR(255), 
+    CPF VARCHAR(11) NOT NULL,
+    Nome VARCHAR(255),
+    Endereco VARCHAR(255),
     Email VARCHAR(255), 
     Telefone VARCHAR(12), 
     Salario DECIMAL(7,2), 
