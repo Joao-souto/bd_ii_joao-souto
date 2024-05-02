@@ -1,106 +1,126 @@
+-- João Pedro Monteiro Souto
 show databases; --  o sistema retorna uma lista de todos os bancos de dados existentes
-drop database if exists restaurante; -- apaga banco de dados se existir
-create database restaurante;
-USE restaurante;
+-- Criação do banco de dados 
+CREATE DATABASE IF NOT EXISTS Restaurante; 
+USE Restaurante; 
 
-create table clientes(
-    cod_cliente int not null,
-    nome varchar(50),
-    cep char(8),
-    endereco varchar(50),
-    telefone varchar(20),
-    email varchar (30),
-    primary key (cod_cliente)
-);
+-- Tabela Clientes 
 
-create table pizzas(
-    cod_pizza int not null,
-    nome varchar(50),
-    vegana boolean,
-    ingredientes varchar(150),
-    primary key (cod_pizza)
-);
+CREATE TABLE IF NOT EXISTS Clientes ( 
 
-create table fornecedores(
-    cnpj char(14) not null,
-    pizza_fornecida int,
-    fornecedor varchar(20),
-    telefone varchar(20),
-    email varchar(30),
-    primary key (cnpj),
-    foreign key (pizza_fornecida) references pizzas (cod_pizza)
-);
+    ID_cliente INT AUTO_INCREMENT, 
+    CPF VARCHAR(11) NOT NULL, 
+    Nome VARCHAR(255), 
+    Endereco VARCHAR(255), 
+    Email VARCHAR(255), 
+    Telefone VARCHAR(12), 
+    PRIMARY KEY (ID_cliente) 
 
-create table funcionarios(
-    cod_funcionario int not null,
-    nome varchar(50),
-    cpf  char(11),
-    rg varchar(10),
-    cep char(8),
-    endereco varchar(50),
-    telefone varchar(20),
-    email varchar (30),
-    primary key (cod_funcionario)
-);
+); 
+-- Tabela Funcionários 
 
-create table pedidos(
-    cod_pedido int,
-    cod_cliente int,
-    cod_pizza int,
-    quant_pizzas int,
-    data_pedido varchar(20),
-    primary key (cod_pedido),
-    foreign key (cod_cliente) references clientes (cod_cliente),
-    foreign key (cod_pizza) references pizzas (cod_pizza)
-);
+CREATE TABLE IF NOT EXISTS Funcionarios ( 
 
-insert into clientes
-(
-cod_cliente, nome, cep, endereco, telefone, email
-)
-values
-(1,'João',"01515000",'Rua 121233',"11976535190",'adriano123@outlook.com'),
-(2,'Adriano',"01515000",'Rua 121233',"11976535190",'adriano123@outlook.com'),
-(3,'Marcelo',"01515000",'Rua 112312323',"11976535178",'lordeceluis@gmail.com'),
-(4,'Larissa',"01515000",'Rua 1afdg23',"11976535177",'larissinha0@outlook.com'),
-(5,'Pedro',"01515000",'Rua 12dsfgsdf3',"11976535148",'pedroca0@outlook.com');
+    ID_funcionario INT AUTO_INCREMENT, 
+    CPF VARCHAR(11) NOT NULL, 
+    Nome VARCHAR(255), 
+    Endereco VARCHAR(255), 
+    Email VARCHAR(255), 
+    Telefone VARCHAR(12), 
+    Salario DECIMAL(7,2), 
+    PRIMARY KEY (ID_funcionario) 
 
-insert into funcionarios
-(
-cod_funcionario, nome, cpf, rg, cep, endereco, telefone, email
-)
-values
-(1,'João Santos Monteiro', "50032824732","64988954-1", "01515000",'Rua 121233',"11976535190",'joao@outlook.com'),
-(2,'Carlos Monteiro', "50032824732","64988954-1", "01515000",'Rua 121233',"11976535190",'carlos@outlook.com'),
-(3,'Henrique Santos', "50032824732","64988954-1", "01515000",'Rua 121233',"11976535190",'henrique@outlook.com'),
-(4,'Gielly Souza Monteiro', "50032824732","64988954-1", "01515000",'Rua 121233',"11976535190",'gigi@outlook.com'),
-(5,'Junior Monteiro', "50032824732","64988954-1", "01515000",'Rua 121233',"11976535190",'junin@outlook.com');
+); 
+-- Tabela Pratos 
 
-insert into pizzas
-(
-cod_pizza, nome, vegana, ingredientes
-)
-values
-(1,'Margherita',true,'Molho de tomate, mussarela (ou queijo vegano), manjericão fresco.'),
-(2,'Pepperoni',false,'Molho de tomate, queijo mussarela (ou queijo vegano), pepperoni (salame).'),
-(3,'Vegetariana',false,'Molho de tomate, queijo mussarela, variedade de vegetais como pimentão, cogumelos, cebola, azeitonas, etc.'),
-(4,'Vegana',true,'Molho de tomate, queijo vegano, variedade de vegetais como pimentão, cogumelos, cebola, azeitonas, etc.'),
-(5,'Quatro Queijos',false,'Molho de tomate, queijos diversos como mussarela, gorgonzola, parmesão, provolone (ou suas versões veganas).'),
-(6,'Quatro Queijos Vegano',true,'Molho de tomate, queijos diversos como mussarela, gorgonzola, parmesão, provolone (suas versões veganas).');
+CREATE TABLE IF NOT EXISTS Pratos ( 
 
-insert into fornecedores 
-(
-cnpj, pizza_fornecida, fornecedor, telefone, email
-)
-values
-('04743646000159',1,'Compre Aqui',"11976535190",'adriano123@outlook.com'),
-('04743636000155',2,'Atacadão',"11976535190",'adriano123@outlook.com');
+    ID_prato INT AUTO_INCREMENT, 
+    Ingredientes VARCHAR(255), 
+    Descricao VARCHAR(255), 
+    Preco DECIMAL(5,2), 
+    PRIMARY KEY (ID_prato) 
 
-insert into pedidos
-(
-    cod_pedido, cod_cliente, cod_pizza, quant_pizzas, data_pedido
-)
-values
-(1,3,6,2,"12/02/2024"),
-(2,4,3,2,"11/02/2024"),
-(3,2,2,2,"11/02/2024");
+); 
+-- Tabela Fornecedores 
+
+CREATE TABLE IF NOT EXISTS Fornecedores ( 
+
+    ID_fornecedor INT AUTO_INCREMENT, 
+    CNPJ VARCHAR(14), 
+    Email VARCHAR(255), 
+    Telefone VARCHAR(12), 
+    Valor_materia DECIMAL(8,2), 
+    PRIMARY KEY (ID_fornecedor) 
+
+); 
+-- Tabela Reservas 
+
+CREATE TABLE IF NOT EXISTS Reservas ( 
+
+    Data_reserva DATETIME, 
+    ID_cliente INT, 
+    Mesa VARCHAR(2), 
+    FOREIGN KEY (ID_cliente) REFERENCES Clientes (ID_cliente) 
+
+); 
+-- Tabela Estoque 
+
+CREATE TABLE IF NOT EXISTS Estoque ( 
+    ID_fornecedor INT, 
+    ID_materia INT AUTO_INCREMENT, 
+    Quantidade INT, 
+    Qualidade DECIMAL(4,2), 
+    PRIMARY KEY (ID_materia), 
+    FOREIGN KEY (ID_fornecedor) REFERENCES Fornecedores (ID_fornecedor) 
+); 
+-- Tabela Filiais 
+
+CREATE TABLE IF NOT EXISTS Filiais ( 
+
+    ID_filial INT AUTO_INCREMENT, 
+    Endereco VARCHAR(255), 
+    Email VARCHAR(255), 
+    Telefone VARCHAR(12), 
+    Quant_mesas INT, 
+    Avaliacao DECIMAL(4,2), 
+    PRIMARY KEY (ID_filial) 
+); 
+
+-- Tabela Bebidas 
+
+CREATE TABLE IF NOT EXISTS Bebidas ( 
+    ID_bebida INT AUTO_INCREMENT, 
+    Nome VARCHAR (255), 
+    Descricao VARCHAR(255), 
+    Valor DECIMAL(4,2), 
+    PRIMARY KEY (ID_bebida) 
+); 
+
+-- Tabela Pedidos 
+
+CREATE TABLE IF NOT EXISTS Pedidos ( 
+
+    ID_pedido INT AUTO_INCREMENT, 
+    ID_cliente INT, 
+    ID_prato INT, 
+    ID_bebida INT, 
+    Preco DECIMAL(4,2), 
+    Endereco VARCHAR(255), 
+    PRIMARY KEY (ID_pedido), 
+    FOREIGN KEY (ID_cliente) REFERENCES Clientes(ID_cliente), 
+    FOREIGN KEY (ID_prato) REFERENCES Pratos (ID_prato), 
+    FOREIGN KEY (ID_bebida) REFERENCES Bebidas (ID_bebida) 
+
+); 
+-- Tabela Entregas 
+CREATE TABLE IF NOT EXISTS Entregas ( 
+
+    ID_entrega INT AUTO_INCREMENT, 
+    Endereco VARCHAR(255), 
+    ID_pedido INT, 
+    Valor DECIMAL(6,2), 
+    PRIMARY KEY (ID_entrega), 
+    FOREIGN KEY (ID_pedido) REFERENCES Pedidos (ID_pedido) 
+
+); 
