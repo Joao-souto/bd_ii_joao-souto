@@ -124,3 +124,5 @@ CREATE TABLE IF NOT EXISTS Entregas (
     FOREIGN KEY (ID_pedido) REFERENCES Pedidos (ID_pedido) 
 
 ); 
+
+-- arrumar atributos das entidades e incluir entidade de ingredientes (que está chamando estoque)
