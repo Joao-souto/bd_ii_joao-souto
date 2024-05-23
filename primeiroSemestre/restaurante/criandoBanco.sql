@@ -2,7 +2,7 @@ DROP DATABASE IF EXISTS Restaurante;
 CREATE DATABASE Restaurante; 
 USE Restaurante; 
 
--- Tabela de clientes
+-- Tabela de Clientes
 CREATE TABLE IF NOT EXISTS Clientes( 
 	ID_cliente int(8) AUTO_INCREMENT, 
 	CPF varchar(11) not null, 
@@ -11,11 +11,12 @@ CREATE TABLE IF NOT EXISTS Clientes(
 	Idade varchar(3),
 	Endereco varchar(255), 
 	Email varchar(255), 
-	Telefone varchar(12), 
+	Telefone varchar(12),
+	Data_cadastro datetime, 
 	PRIMARY KEY (ID_cliente) 
 );
 
--- Tabela de filiais
+-- Tabela de Filiais 
 CREATE TABLE IF NOT EXISTS Filiais( 
 	ID_filial int(3) AUTO_INCREMENT, 
 	Endereco varchar(255), 
@@ -37,16 +38,21 @@ CREATE TABLE IF NOT EXISTS Funcionarios(
 	Email varchar(255), 
 	Telefone varchar(12), 
 	ID_filial int(3),
+	Cargo varchar(255),
+	Data_contatacao datetime,
 	PRIMARY KEY (ID_func),
 	FOREIGN KEY (ID_filial) REFERENCES Filiais(ID_filial)
 ); 
 
 -- Tabela de Reservas
-CREATE TABLE IF NOT EXISTS Reservas( 
+CREATE TABLE IF NOT EXISTS Reservas(
+	ID_reserva int(5) AUTO_INCREMENT not null,
 	Data_reserva datetime, 
 	ID_cliente int(8), 
 	Mesa varchar(2),
 	ID_filial int(3),
+	Capacidade varchar(2),
+	PRIMARY KEY (ID_reserva),
 	FOREIGN KEY (ID_cliente) REFERENCES Clientes (ID_cliente),
 	FOREIGN KEY (ID_filial) REFERENCES Filiais(ID_filial)
 ); 
@@ -66,7 +72,7 @@ CREATE TABLE IF NOT EXISTS Fornecedores(
 -- Tabela de Estoque
 CREATE TABLE IF NOT EXISTS Estoque( 
 	ID_fornecedor int(5), 
-	ID_materia varchar(6) AUTO_INCREMENT, 
+	ID_materia int(6) AUTO_INCREMENT, 
 	Quantidade int(5),
 	ID_filial int(3),
 	PRIMARY KEY (ID_materia), 
@@ -74,19 +80,12 @@ CREATE TABLE IF NOT EXISTS Estoque(
 	FOREIGN KEY (ID_filial) REFERENCES Filiais(ID_filial)
 );  
 
--- Tabela de Ingredientes
-CREATE TABLE IF NOT EXISTS Ingredientes(
-	ID_ingrediente int(3) AUTO_INCREMENT,
-	Unidade_medida Varchar(255),
-	PRIMARY KEY (ID_ingrediente)
-);
-
 -- Tabela de Pratos
 CREATE TABLE IF NOT EXISTS Pratos( 
-	ID_prato int(8) AUTO_INCREMENT,
+	ID_prato int(3) AUTO_INCREMENT,
 	Nome varchar(255),
-	Descricao varchar(255), 
-	Valor decimal(5,2), 
+	Descricao varchar(255),
+	Valor decimal(5,2),
 	PRIMARY KEY (ID_prato) 
 ); 
 
@@ -99,6 +98,18 @@ CREATE TABLE IF NOT EXISTS Bebidas(
 	PRIMARY KEY (ID_bebida) 
 ); 
 
+-- Tabela de Ingredientes
+CREATE TABLE IF NOT EXISTS Ingredientes(
+	ID_ingrediente int(3) AUTO_INCREMENT,
+    Nome varchar(255),
+	Unidade_medida Varchar(255),
+	ID_prato int(3),
+	ID_bebida int(3),
+	PRIMARY KEY (ID_ingrediente),
+	FOREIGN KEY (ID_prato) REFERENCES Pratos(ID_prato),
+	FOREIGN KEY (ID_bebida) REFERENCES Bebidas(ID_bebida)
+);
+
 -- Tabela de Pedidos
 CREATE TABLE IF NOT EXISTS Pedidos( 
 	ID_pedido int(8) AUTO_INCREMENT, 
@@ -107,7 +118,8 @@ CREATE TABLE IF NOT EXISTS Pedidos(
 	ID_bebida int(3), 
 	Valor decimal(4,2),
 	Tipo_pagamento varchar(255),
-	Endereco varchar(255), 
+	Endereco varchar(255),
+	Data_pedido datetime,
 	PRIMARY KEY (ID_pedido), 
 	FOREIGN KEY (ID_cliente) REFERENCES Clientes(ID_cliente), 
 	FOREIGN KEY (ID_prato) REFERENCES Pratos (ID_prato), 
@@ -118,7 +130,8 @@ CREATE TABLE IF NOT EXISTS Pedidos(
 CREATE TABLE IF NOT EXISTS Entregas( 
 	ID_entrega int(5) AUTO_INCREMENT,
 	Endereco varchar(255),
-	ID_pedido int(8), 
+	ID_pedido int(8),
+	Data_entrega datetime,
 	PRIMARY KEY (ID_entrega), 
 	FOREIGN KEY (ID_pedido) REFERENCES Pedidos (ID_pedido) 
 ); 
