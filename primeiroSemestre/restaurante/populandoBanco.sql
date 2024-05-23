@@ -2,10 +2,10 @@ USE Restaurante;
 
 insert into Clientes(CPF,Nome,Sexo,Idade,Endereco,Email,Telefone,Data_cadastro)
 values("50062851845","João Pedro Monteiro Souto","Masculino",16,"Rua Ministro Lins de Barros","joaosouto0@outlook.com","11976535178","2024-06-25"),
-values("50062851822","José Monteiro Souto","Masculino",18,"Rua da Mooca","jose123333@outlook.com","11976523278","2024-02-25"),
-values("50062851811","Pedro Silva Souto","Masculino",18,"Rua da Mooca","jose231133@outlook.com","11976599278","2024-01-25"),
-values("31062851811","Fernanda Silva Souto","Feminino",20,"Rua do Oratório","fefefe1212@outlook.com","11976599211","2024-01-25"),
-values("31062851221","Gielly Silva Souto","Feminino",45,"Curva do S","gigigi321654@outlook.com","11922599211","2023-01-25")
+("50062851822","José Monteiro Souto","Masculino",18,"Rua da Mooca","jose123333@outlook.com","11976523278","2024-02-25"),
+("50062851811","Pedro Silva Souto","Masculino",18,"Rua da Mooca","jose231133@outlook.com","11976599278","2024-01-25"),
+("31062851811","Fernanda Silva Souto","Feminino",20,"Rua do Oratório","fefefe1212@outlook.com","11976599211","2024-01-25"),
+("31062851221","Gielly Silva Souto","Feminino",45,"Curva do S","gigigi321654@outlook.com","11922599211","2023-01-25");
 
 INSERT INTO Filiais(Endereco, Email, Telefone, Quant_mesas, Avaliacao)
  VALUES ('123 Main Street, Cityville', 'exemplo@email.com', '(123) 456-7890', 20, 4.5);
@@ -34,13 +34,13 @@ VALUES
 ('Fornecedor B', '98765432109876', 'Material B', 'fornecedorB@example.com', '(22) 12345-6789', 150.00);
 
 
-INSERT INTO Estoque(Produtos, Ingredientes, Quantidade) 
+INSERT INTO Estoque(Produtos, Quantidade) 
 VALUES 
-('Lasanha à Bolonhesa', 'Massa de lasanha, carne moída, molho de tomate, queijo mussarela, queijo parmesão, temperos', 20),
-('Risoto de Funghi', 'Arroz arbóreo, cogumelos funghi secos, caldo de legumes, cebola, alho, vinho branco, queijo parmesão, manteiga', 15),
-('Salada Caesar', 'Alface romana, croutons, queijo parmesão, molho caesar, peito de frango grelhado', 30),
-('Sopa de Legumes', 'Legumes variados (cenoura, batata, abóbora, etc.), caldo de legumes, cebola, alho, temperos', 25),
-('Mousse de Chocolate', 'Chocolate meio amargo, creme de leite, ovos, açúcar, essência de baunilha', 40);
+('Lasanha à Bolonhesa', 20),
+('Risoto de Funghi', 15),
+('Salada Caesar', 30),
+('Sopa de Legumes', 25),
+('Mousse de Chocolate', 40);
 
 INSERT INTO Ingredientes(Nome, Unidade_medida) 
 VALUES 
@@ -52,37 +52,25 @@ VALUES
 
 INSERT INTO Pratos(Nome, Descricao, Valor) 
 VALUES 
-('NomeDoPrato', 'DescriçãoDoPrato', ValorDoPrato);
+('Lasanha à Bolonhesa', 'DescriçãoDoPrato', 29.9);
 
 
 INSERT INTO Bebidas(Nome, Descricao, Valor) 
 VALUES 
-('NomeDaBebida1', 'DescriçãoDaBebida1', ValorDaBebida1),
-('NomeDaBebida2', 'DescriçãoDaBebida2', ValorDaBebida2);
+('NomeDaBebida1', 'DescriçãoDaBebida1', 15.9),
+('NomeDaBebida2', 'DescriçãoDaBebida2', 18.5);
 
 
 INSERT INTO Pedidos(Valor, Tipo_pagamento, Endereco, Data_pedido) 
 VALUES 
-(ValorDoPedido1, 'TipoPagamento1', 'EnderecoPedido1', 'DataPedido1'),
-(ValorDoPedido2, 'TipoPagamento2', 'EnderecoPedido2', 'DataPedido2'),
-(ValorDoPedido3, 'TipoPagamento3', 'EnderecoPedido3', 'DataPedido3'),
-(ValorDoPedido4, 'TipoPagamento4', 'EnderecoPedido4', 'DataPedido4'),
-(ValorDoPedido5, 'TipoPagamento5', 'EnderecoPedido5', 'DataPedido5');
+(54.9, 'TipoPagamento1', 'EnderecoPedido1', 'DataPedido1'),
+(54.9, 'TipoPagamento2', 'EnderecoPedido2', 'DataPedido2'),
+(54.9, 'TipoPagamento3', 'EnderecoPedido3', 'DataPedido3'),
+(54.9, 'TipoPagamento4', 'EnderecoPedido4', 'DataPedido4'),
+(54.9, 'TipoPagamento5', 'EnderecoPedido5', 'DataPedido5');
 
 INSERT INTO Entregas(Endereco, Data_entrega) 
 VALUES 
 ('EnderecoEntrega1', 'DataEntrega1'),
 ('EnderecoEntrega2', 'DataEntrega2'),
 ('EnderecoEntrega3', 'DataEntrega3');
-
-SELECT * FROM Clientes;
-SELECT * FROM Filiais;
-SELECT * FROM Funcionarios;
-SELECT * FROM Reservas;
-SELECT * FROM Fornecedores;
-SELECT * FROM Estoque;
-SELECT * FROM Ingredientes;
-SELECT * FROM Pratos;
-SELECT * FROM Bebidas;
-SELECT * FROM Pedidos;
-SELECT * FROM Entregas;
