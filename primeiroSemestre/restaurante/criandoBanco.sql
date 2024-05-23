@@ -72,12 +72,15 @@ CREATE TABLE IF NOT EXISTS Fornecedores(
 -- Tabela de Estoque
 CREATE TABLE IF NOT EXISTS Estoque( 
 	ID_fornecedor int(5), 
+	Produtos varchar(50),
+	Ingredientes varchar (50),
 	ID_materia int(6) AUTO_INCREMENT, 
 	Quantidade int(5),
 	ID_filial int(3),
 	PRIMARY KEY (ID_materia), 
 	FOREIGN KEY (ID_fornecedor) REFERENCES Fornecedores (ID_fornecedor),
-	FOREIGN KEY (ID_filial) REFERENCES Filiais(ID_filial)
+	FOREIGN KEY (ID_filial) REFERENCES Filiais(ID_filial),
+	FOREIGN KEY (ID_ingrediente) REFERENCES Ingredientes(ID_ingrediente)
 );  
 
 -- Tabela de Pratos
