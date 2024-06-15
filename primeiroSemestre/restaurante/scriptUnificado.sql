@@ -14,7 +14,7 @@ CREATE TABLE IF NOT EXISTS Clientes(
 	Endereco varchar(255), 
 	Email varchar(255), 
 	Telefone varchar(12),
-	Data_cadastro datetime, 
+	Data_cadastro datetime,
 	PRIMARY KEY (ID_cliente) 
 );
 
