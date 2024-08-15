@@ -1,0 +1,3 @@
+-- INNER JOIN: Retorna apenas as linhas que têm correspondência em ambas as tabelas.
+SELECT clientes.nome, pedidos.endereco,pedidos.data_pedido from Clientes INNER JOIN pedidos on clientes.id_cliente = pedidos.id_cliente;
+-- Nesta linha, estou selecionando os atributos das respectivas tabelas combinando as tabelas Clientes e pedidos com o critério de o ID_cliente ser igual nas linhas em ambas as tabelas.
