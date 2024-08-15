@@ -32,16 +32,6 @@ CREATE TABLE IF NOT EXISTS Clientes(
     FOREIGN KEY (ID_filial) REFERENCES Filiais(ID_filial)
 );
 
--- Tabela de Login
-CREATE TABLE IF NOT EXISTS Login(
-    ID_login int(8) AUTO_INCREMENT,
-    ID_cliente int(8),
-    Username varchar(255) NOT NULL,
-    Senha varchar(255) NOT NULL,
-    PRIMARY KEY (ID_login),
-    FOREIGN KEY (ID_cliente) REFERENCES Clientes(ID_cliente)
-);
-
 -- Tabela de Funcionários
 CREATE TABLE IF NOT EXISTS Funcionarios(
     ID_func int(5) AUTO_INCREMENT,
@@ -171,19 +161,6 @@ INSERT INTO Clientes (CPF, Nome, Senha, Sexo, Idade, Endereco, Email, Telefone, 
 ('89012345678', 'Lucas Almeida', 'senha890', 'Masculino', '24', 'Rua H, 505', 'lucas.almeida@gmail.com', '9876543217', '2023-01-08 17:00:00', 3),
 ('90123456789', 'Larissa Carvalho', 'senha901', 'Feminino', '23', 'Rua I, 606', 'larissa.carvalho@gmail.com', '9876543218', '2023-01-09 18:00:00', 4),
 ('01234567890', 'Ricardo Araújo', 'senha012', 'Masculino', '31', 'Rua J, 707', 'ricardo.araujo@gmail.com', '9876543219', '2023-01-10 19:00:00', 5);
-
--- Inserir dados na tabela Login
-INSERT INTO Login (ID_cliente, Username, Senha) VALUES
-(1, 'mariasilva', 'senha123'),
-(2, 'joaosouza', 'senha234'),
-(3, 'anapereira', 'senha345'),
-(4, 'carlossantos', 'senha456'),
-(5, 'juliaoliveira', 'senha567'),
-(6, 'pedrolima', 'senha678'),
-(7, 'marianacosta', 'senha789'),
-(8, 'lucasalmeida', 'senha890'),
-(9, 'larissacarvalho', 'senha901'),
-(10, 'ricardoaraujo', 'senha012');
 
 -- Inserir dados na tabela Funcionarios
 INSERT INTO Funcionarios (CPF, Nome, Sexo, Idade, Endereco, Email, Telefone, ID_filial, Cargo, Data_contatacao) VALUES
