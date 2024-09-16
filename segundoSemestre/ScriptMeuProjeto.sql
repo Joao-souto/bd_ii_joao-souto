@@ -210,18 +210,6 @@ INSERT INTO FORNECEDORES (NOME, CNPJ, TIPO_MATERIAL, EMAIL, TELEFONE, VALOR_MATE
 ('Fornecedor I', '90123456000103', 'Massas', 'fornecedorI@exemplo.com', '9999-9999', 1400.00),
 ('Fornecedor J', '01234567000104', 'Doces', 'fornecedorJ@exemplo.com', '0000-0000', 1600.00);
 
--- Inserindo dados na tabela ESTOQUE
-INSERT INTO ESTOQUE (ID_FORNECEDOR, QUANTIDADE, QUANTIDADE_MINIMA, ID_FILIAL) VALUES
-(1, 100, 10, 1),
-(2, 200, 20, 2),
-(3, 150, 15, 3),
-(4, 50, 5, 4),
-(5, 75, 10, 5),
-(6, 90, 8, 6),
-(7, 120, 12, 7),
-(8, 60, 6, 8),
-(9, 80, 7, 9),
-(10, 110, 11, 10);
 
 -- Inserindo dados na tabela PRATOS
 INSERT INTO PRATOS (NOME, DESCRICAO, VALOR) VALUES
@@ -287,3 +275,16 @@ INSERT INTO ENTREGAS (ENDERECO, ID_PEDIDO, DATA_ENTREGA) VALUES
 ('Rua H, 80', 8, NOW() + INTERVAL 1 DAY),
 ('Rua I, 90', 9, NOW() + INTERVAL 2 DAY),
 ('Rua J, 100', 10, NOW() + INTERVAL 3 DAY);
+
+-- Inserindo dados na tabela ESTOQUE
+INSERT INTO ESTOQUE (ID_INGREDIENTE, ID_FORNECEDOR, QUANTIDADE, QUANTIDADE_MINIMA, ID_FILIAL) VALUES
+(1,1, 100, 10, 1),
+(2,2, 200, 20, 2),
+(3,3, 150, 15, 3),
+(4,4, 50, 5, 4),
+(5,5, 75, 10, 5),
+(6,6, 90, 8, 6),
+(7,7, 120, 12, 7),
+(8,8, 60, 6, 8),
+(9,9, 80, 7, 9),
+(10,10, 110, 11, 10);
