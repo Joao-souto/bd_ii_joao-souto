@@ -98,11 +98,7 @@ CREATE TABLE INGREDIENTES (
     ID_INGREDIENTE INT AUTO_INCREMENT,
     NOME VARCHAR(255),
     UNIDADE_MEDIDA VARCHAR(255),
-    ID_PRATO INT,
-    ID_BEBIDA INT,
-    PRIMARY KEY (ID_INGREDIENTE),
-    FOREIGN KEY (ID_PRATO) REFERENCES PRATOS(ID_PRATO),
-    FOREIGN KEY (ID_BEBIDA) REFERENCES BEBIDAS(ID_BEBIDA)
+    PRIMARY KEY (ID_INGREDIENTE)
 );
 
 -- Tabela de Estoque
@@ -379,38 +375,38 @@ INSERT INTO BEBIDAS (NOME, DESCRICAO, VALOR) VALUES
 ('Chá de Hibisco', 'Chá de hibisco refrescante', 7.00);
 
 -- Inserindo dados na tabela INGREDIENTES
-INSERT INTO INGREDIENTES (NOME, UNIDADE_MEDIDA, ID_PRATO, ID_BEBIDA) VALUES
-('Tomate', 'kg', 1, NULL),
-('Carne Moída', 'kg', 2, NULL),
-('Feijão Preto', 'kg', 3, NULL),
-('Arroz', 'kg', 4, NULL),
-('Alface', 'kg', 5, NULL),
-('Peito de Frango', 'kg', 6, NULL),
-('Massa de Pizza', 'kg', 7, NULL),
-('Queijo Mozzarella', 'kg', 8, NULL),
-('Cerveja Lager', 'litro', NULL, 1),
-('Vinho Tinto', 'garrafa', NULL, 2),
-('Cebola', 'kg', 9, NULL),
-('Alho', 'kg', 10, NULL),
-('Carne Seca', 'kg', 11, NULL),
-('Laranja', 'kg', NULL, 1),
-('Azeitona', 'kg', 12, NULL),
-('Maionese', 'kg', 13, NULL),
-('Farinha de Trigo', 'kg', 14, NULL),
-('Queijo Parmesão', 'kg', 15, NULL),
-('Sushi de Salmão', 'kg', 16, NULL),
-('Camarão', 'kg', 17, NULL),
-('Molho de Soja', 'litro', NULL, 2),
-('Leite', 'litro', NULL, 3),
-('Coco Ralado', 'kg', NULL, 1),
-('Bacon', 'kg', 5, NULL),
-('Batata', 'kg', 5, NULL),
-('Frango em Cubos', 'kg', 18, NULL),
-('Ervilha', 'kg', 2, NULL),
-('Vinagre', 'litro', NULL, 2),
-('Gengibre', 'kg', NULL, 1),
-('Cenoura', 'kg', NULL, 2),
-('Pimenta do Reino', 'kg', NULL, 1);
+INSERT INTO INGREDIENTES (NOME, UNIDADE_MEDIDA) VALUES
+('Tomate', 'kg'),
+('Carne Moída', 'kg'),
+('Feijão Preto', 'kg'),
+('Arroz', 'kg'),
+('Alface', 'kg'),
+('Peito de Frango', 'kg'),
+('Massa de Pizza', 'kg'),
+('Queijo Mozzarella', 'kg'),
+('Cerveja Lager', 'litro'),
+('Vinho Tinto', 'garrafa'),
+('Cebola', 'kg'),
+('Alho', 'kg'),
+('Carne Seca', 'kg'),
+('Laranja', 'kg'),
+('Azeitona', 'kg'),
+('Maionese', 'kg'),
+('Farinha de Trigo', 'kg'),
+('Queijo Parmesão', 'kg'),
+('Sushi de Salmão', 'kg'),
+('Camarão', 'kg'),
+('Molho de Soja', 'litro'),
+('Leite', 'litro'),
+('Coco Ralado', 'kg'),
+('Bacon', 'kg'),
+('Batata', 'kg'),
+('Frango em Cubos', 'kg'),
+('Ervilha', 'kg'),
+('Vinagre', 'litro'),
+('Gengibre', 'kg'),
+('Cenoura', 'kg'),
+('Pimenta do Reino', 'kg');
 
 -- Inserindo dados na tabela PEDIDOS
 INSERT INTO PEDIDOS (ID_CLIENTE, ID_PRATO, ID_BEBIDA, VALOR, TIPO_PAGAMENTO, ENDERECO, DATA_PEDIDO, STATUS) VALUES
