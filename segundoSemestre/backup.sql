@@ -144,6 +144,7 @@ USE RESTAURANTE;
 
 -- Inserindo dados na tabela FILIAIS
 INSERT INTO FILIAIS (ENDERECO, EMAIL, TELEFONE, QUANT_MESAS, AVALIACAO) VALUES
+('EXCLUÍDO', 'EXCLUÍDO', 'EXCLUÍDO', 0, 0),
 ('Rua das Flores, 123', 'filial1@restaurante.com', '1111-1111', 20, 4.5),
 ('Avenida Central, 456', 'filial2@restaurante.com', '2222-2222', 30, 4.2),
 ('Rua da Praia, 789', 'filial3@restaurante.com', '3333-3333', 15, 4.7),
@@ -276,6 +277,7 @@ INSERT INTO RESERVAS (DATA_RESERVA, ID_CLIENTE, MESA, ID_FILIAL, CAPACIDADE) VAL
 
 -- Inserindo dados na tabela FORNECEDORES
 INSERT INTO FORNECEDORES (NOME, CNPJ, TIPO_MATERIAL, EMAIL, TELEFONE, VALOR_MATERIAL) VALUES
+('EXCLUÍDO', 'EXCLUÍDO', 'EXCLUÍDO', 'EXCLUÍDO', 'EXCLUÍDO', 0),
 ('Fornecedor A', '12345678000195', 'Legumes', 'fornecedorA@exemplo.com', '1111-1111', 1500.00),
 ('Fornecedor B', '23456789000196', 'Carnes', 'fornecedorB@exemplo.com', '2222-2222', 2500.00),
 ('Fornecedor C', '34567890000197', 'Bebidas', 'fornecedorC@exemplo.com', '3333-3333', 1800.00),
@@ -376,6 +378,7 @@ INSERT INTO BEBIDAS (NOME, DESCRICAO, VALOR) VALUES
 
 -- Inserindo dados na tabela INGREDIENTES
 INSERT INTO INGREDIENTES (NOME, UNIDADE_MEDIDA) VALUES
+('EXCLUÍDO', 'EXCLUÍDO'),
 ('Tomate', 'kg'),
 ('Carne Moída', 'kg'),
 ('Feijão Preto', 'kg'),
